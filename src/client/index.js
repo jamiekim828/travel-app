@@ -4,4 +4,4 @@ import './styles/base.scss';
 
 // console.log('this is index.js from Client');
 
-export { handleSubmit };
+export { performAction };
