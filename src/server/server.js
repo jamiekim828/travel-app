@@ -6,6 +6,14 @@ var cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const GeoID = process.env.GEO_ID;
+const WeatherKey = process.env.WEATHERBIT_KEY;
+const PixaKey = process.env.PIXABAY_KEY;
+
+// GeoURL = `http://api.geonames.org/searchJSON?q=${}&username=${GeoID}`;
+// WeatherURL = `https://api.weatherbit.io/v2.0/current?city=${}&key=${WeatherKey}`;
+// PixaURL = `https://pixabay.com/api/?key=${PixaKey}&image_type=photo&q=${}`;
+
 const app = express();
 app.use(cors());
 

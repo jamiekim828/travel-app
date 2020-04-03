@@ -1,0 +1,209 @@
+.header_title {
+  text-align: center;
+  font-family: cursive;
+  font-weight: 800;
+  font-size: 50px;
+}
+
+#results_title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 33px;
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+
+  li {
+    float: left;
+  }
+
+  a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  a:hover {
+    background-color: #111;
+  }
+}
+
+.search_start {
+  font-weight: 400;
+
+  .search_form {
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+
+    position: relative;
+    left: auto;
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    z-index: 3;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 16px;
+    border-radius: 4px;
+    background: #fff
+      linear-gradient(
+        rgba(255, 255, 255, 0.3) 10%,
+        rgba(234, 234, 234, 0.3) 100%
+      );
+    box-shadow: 0 12px 24px -16px rgba(0, 0, 0, 0.5);
+    font-size: 22px;
+    transition-duration: 0.25s;
+  }
+
+  .search_group {
+    border-left: 0;
+    border-radius: 4px 0 0 4px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 16px 0 16px 24px;
+    border-right: 24px solid transparent;
+    // z-index: 2;
+    background: #fff;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .plantrip_button {
+    display: inline-block;
+    vertical-align: top;
+    width: 140px;
+    border-radius: 0 4px 4px 0;
+    background-color: #ffd400;
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    font-size: 20px;
+    line-height: 72px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #292d31;
+    transition-duration: 0.25s;
+  }
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+.results_main {
+  width: 95vw !important;
+  display: block;
+  overflow: visible;
+  width: 60vw;
+  margin: 20px auto 0 auto;
+  border: 1px solid;
+  border-color: rgba(51, 161, 222, 1);
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 3px;
+}
+
+.trip_head {
+  display: block;
+  overflow: visible;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(51, 161, 222, 1);
+}
+
+.trip_plans {
+  display: block;
+  overflow: auto;
+  padding: 20px;
+  background: rgba(235, 235, 235, 0.87);
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  box-sizing: border-box;
+
+  .activities {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+    background: transparent;
+    box-sizing: border-box;
+
+    .plans-c {
+      width: 50%;
+      position: relative;
+      min-height: 1px;
+      padding: 0 10px 10px 10px;
+      float: left;
+      display: inline-block;
+    }
+
+    h4 {
+      margin-bottom: 20px;
+      color: #000;
+      text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 21px;
+      margin: 0 0 0px;
+      display: inline-block;
+    }
+
+    .act {
+      font-size: 60%;
+      vertical-align: 3px;
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ul {
+      list-style-type: none;
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+    }
+
+    .add_item {
+      border: 1px solid;
+      border-color: rgba(51, 161, 222, 1);
+      color: #fff;
+      border-radius: 2px;
+      background: #33a1de;
+      box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 3px;
+      list-style-type: none;
+    }
+
+    .drop {
+      font-weight: 600;
+      text-shadow: 1px 1px 0 #666 !important;
+      margin: 12px 0px !important;
+      font-size: 14px;
+      line-height: 16px;
+      display: inline-block;
+    }
+  }
+}

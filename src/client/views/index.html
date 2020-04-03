@@ -2,12 +2,105 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Planner</title>
-    <link rel="stylesheet" href="/styles/base.css" />
   </head>
   <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+    <header>
+      <div>
+        <h2 class="header_title">Travel Planner</h2>
+      </div>
+      <div>
+        <ul class="navbar">
+          <li class="naveli"><a href="#home">Home</a></li>
+          <li class="naveli"><a href="#create">Create Trip</a></li>
+          <li class="naveli"><a href="#list">My Trip List</a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div class="">
+        <section class="search">
+          <div class="search_start">
+            <h4>Let's get started</h4>
+            <form class="search_form">
+              <div class="search_group">
+                <label class="search_label">Origin : </label>
+                <input
+                  type="text"
+                  class="search_inpup_from"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="search_group">
+                <label class="search_label">Destination : </label>
+                <input type="text" class="search_input_to" autocomplete="off" />
+              </div>
+              <button type="button" class="plantrip_button">
+                Plan Trip
+              </button>
+            </form>
+          </div>
+        </section>
+        <section class="results">
+          <div class="results_title">
+            <h3 id="results_title">My Trip List</h3>
+          </div>
+          <div class="results_main">
+            <div class="trip_head">
+              <div class="trip_hoofd">
+                <div class="day_number">
+                  <h3 id="where">Trip to :</h3>
+                  <h3 id="where_name"></h3>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="city"
+                    id="place"
+                    class="city_name"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="trip_plans">
+              <div class="plans-c">
+                <div class="howlong"></div>
+              </div>
+              <div class="plans-c">
+                <div class="howlong"></div>
+              </div>
+              <div class="plans-c">
+                <div class="activities">
+                  <h4>
+                    <span class="act"></span>
+                    "Do & See"
+                  </h4>
+                  <ul>
+                    <li class="add_item" id="add_item">
+                      <div class="add_header">
+                        <p class="drop">Add Something To Do</p>
+                        <span class="fa_plus drop"></span>
+                      </div>
+                      <div class="todo">
+                        <form class="todo_custom">
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Add what do do"
+                          />
+                          <button type="submit" class="fa-right"></button>
+                        </form>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   </body>
 </html>
