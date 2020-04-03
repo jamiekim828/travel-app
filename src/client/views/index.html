@@ -36,6 +36,16 @@
                 <label class="search_label">Destination : </label>
                 <input type="text" class="search_input_to" autocomplete="off" />
               </div>
+              <div class="date">
+                <label for="travel-date"><h3>Departure</h3></label>
+                <span class="focus-border">
+                <input type="date" id="departure-date" name="date" min="2019-12-31" max="2023-12-31">
+              </div>
+              <div class="date">
+                <label for="return-date"><h3>Return</h3></label>
+                <span class="focus-border">
+                <input type="date" id="return-date" name="date" min="2019-12-31" max="2023-12-31">
+              </div>
               <button type="button" class="plantrip_button">
                 Plan Trip
               </button>
@@ -51,10 +61,12 @@
               <div class="trip_hoofd">
                 <div class="day_number">
                   <h3 id="where">City Name</h3>
-                  <input type="date" id="datefrom" placeholder="Date of departure"></input>
+                  <h4>- nights & - days</h4>
+                  <h4>from (departure date) to (return date)</h4>
                 </div>
                 <div>
                   
+                  <h3>" " days left</h3>
                   <h3>Usual Weather</h3>
                   <h3>Add Flight Info</h3>
                   
@@ -62,12 +74,6 @@
               </div>
             </div>
             <div class="trip_plans">
-              <div class="plans-c">
-                <div class="howlong"></div>
-              </div>
-              <div class="plans-c">
-                <div class="howlong"></div>
-              </div>
               <div class="plans-c">
                 <div class="activities">
                   <h4>
@@ -94,6 +100,33 @@
                   </ul>
                 </div>
               </div>
+              <div class="plans-c">
+                <div class="activities">
+                  <h4>
+                    <span class="act"></span>
+                    "Packing List"
+                  </h4>
+                  <ul>
+                    <li class="add_item" id="add_item">
+                      <div class="add_header">
+                        <p class="drop">Add your packing items</p>
+                        <span class="fa_plus drop"></span>
+                      </div>
+                      <div class="todo">
+                        <form class="todo_custom">
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Packing items"
+                          />
+                          <button type="submit" class="fa-right"></button>
+                        </form>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
