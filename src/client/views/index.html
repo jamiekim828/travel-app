@@ -25,28 +25,43 @@
             <h4>Let's get started</h4>
             <form class="search_form">
               <div class="search_group">
-                <label class="search_label">Origin : </label>
+                <label class="search_label" id="origin">Origin : </label>
                 <input
                   type="text"
-                  class="search_inpup_from"
+                  class="search_input_from"
                   autocomplete="off"
                 />
               </div>
               <div class="search_group">
                 <label class="search_label">Destination : </label>
-                <input type="text" class="search_input_to" autocomplete="off" />
+                <input
+                  type="text"
+                  class="search_input_to"
+                  id="destination"
+                  autocomplete="off"
+                />
               </div>
-              <div class="date">
-                <label for="travel-date"><h3>Departure</h3></label>
-                <span class="focus-border">
-                <input type="date" id="departure-date" name="date" min="2019-12-31" max="2023-12-31">
+              <div class="search_group">
+                <label for="travel-date">Departure : </label>
+                <input
+                  type="date"
+                  id="departure-date"
+                  name="date"
+                  min="2019-12-31"
+                  max="2023-12-31"
+                />
               </div>
-              <div class="date">
-                <label for="return-date"><h3>Return</h3></label>
-                <span class="focus-border">
-                <input type="date" id="return-date" name="date" min="2019-12-31" max="2023-12-31">
+              <div class="search_group">
+                <label for="return-date">Return : </label>
+                <input
+                  type="date"
+                  id="return-date"
+                  name="date"
+                  min="2019-12-31"
+                  max="2023-12-31"
+                />
               </div>
-              <button type="button" class="plantrip_button">
+              <button type="button" class="plantrip_button" id="planbutton">
                 Plan Trip
               </button>
             </form>
@@ -59,21 +74,52 @@
           <div class="results_main">
             <div class="trip_head">
               <div class="trip_hoofd">
-                <div class="day_number">
-                  <h3 id="where">City Name</h3>
-                  <h4>- nights & - days</h4>
-                  <h4>from (departure date) to (return date)</h4>
+                <div class="cityimg">
+                  <div>city image</div>
                 </div>
-                <div>
-                  
-                  <h3>" " days left</h3>
-                  <h3>Usual Weather</h3>
-                  <h3>Add Flight Info</h3>
-                  
+                <div class="cityinfo">
+                  <h3 id="where">City Name</h3>
+                  <h4>from (departure date) to (return date)</h4>
+                  <h4>- nights & - days</h4>
+                  <div>
+                    <h3>" " days left</h3>
+                    <h3>Usual Weather</h3>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="trip_plans">
+              <div class="plans-c">
+                <div class="activities">
+                  <h4>
+                    <span class="act"></span>
+                    "Flight Info"
+                  </h4>
+                  <ul>
+                    <li class="add_item" id="add_item">
+                      <div class="add_header">
+                        <p class="drop">Add flight info</p>
+                        <span class="fa_plus drop"></span>
+                      </div>
+                      <div class="todo">
+                        <form class="todo_custom">
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Outbound Airline/time"
+                          />
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Inbound Airline/time"
+                          />
+                          <button type="submit" class="fa-right"></button>
+                        </form>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div class="plans-c">
                 <div class="activities">
                   <h4>
@@ -126,7 +172,6 @@
                   </ul>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
