@@ -1,12 +1,19 @@
-const baseUrl = 'http://localhost:8081';
-
 document.getElementById('planbutton').addEventListener('click', performAction);
 
 function performAction(e) {
   let cityname = document.getElementById('destination').value;
 
   if (cityname) {
-    getLocation();
+    getLocation().then(data => {
+      console.log('data', data);
+
+      const cityName = data.city_name;
+      const countryName = data.countryName;
+      postData('http://localhost:8081/add/location', {
+        cityName,
+        countryName
+      });
+    });
   }
 }
 
@@ -28,7 +35,7 @@ const getLocation = async () => {
   }
 };
 
-const postData = async (url = '', data = {}) => {
+const postData = async (url = '/', data = {}) => {
   const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
@@ -39,6 +46,7 @@ const postData = async (url = '', data = {}) => {
   });
   try {
     const result = await res.json();
+    console.log(result);
     return result;
   } catch (error) {
     console.log('error', error);

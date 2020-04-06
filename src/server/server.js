@@ -51,20 +51,61 @@ function getData(req, res) {
 }
 
 // geonames API
-const GeoID = `&username=${process.env.GEO_ID}`;
-const GeoUrl = 'http://api.geonames.org/searchJSON?q=';
+const geoID = `&username=${process.env.GEO_ID}`;
+const geoUrl = 'http://api.geonames.org/searchJSON?q=';
 
 // weatherbit API
-const WeatherKey = `&key=${process.env.WEATHERBIT_KEY}`;
-const WeatherUrl = 'https://api.weatherbit.io/v2.0/current?city=';
+const weatherKey = `&key=${process.env.WEATHERBIT_KEY}`;
+const weatherUrl = 'https://api.weatherbit.io/v2.0/current?city=';
 
 // pixabay API
-const PixaKey = process.env.PIXABAY_KEY;
-const PixaURL = `https://pixabay.com/api/?key=${PixaKey}&image_type=photo&q=`;
-
-// GET route
-app.get('/weather', (req, res) => {
-  console.log('weather req.body', req.body);
-});
+const pixaKey = process.env.PIXABAY_KEY;
+const pixaUrl = `https://pixabay.com/api/?key=${pixaKey}&image_type=photo&q=`;
 
 // POST route
+app.post('/add/location', (req, res) => {
+  // console.log('post req.body', req.body);
+  res.send('Hello World!');
+});
+
+// city data from geonames
+const geonames = async cityName => {
+  const geonamesUrl = geoUrl + cityName + geoID;
+  const res = fetch(geonamesUrl);
+  let city = {};
+  try {
+    city = res.json();
+    return city;
+  } catch (error) {
+    console.log('error', error);
+  }
+  res.send(city);
+};
+
+// weather data from weatherbit
+const weatherbit = async cityName => {
+  const weatherbitUrl = weatherUrl + cityName + weatherKey;
+  const res = fetch(weatherbitUrl);
+  let weather = {};
+  try {
+    weather = await res.json();
+    return weather;
+  } catch (error) {
+    console.log('error', error);
+  }
+  res.send(weather);
+};
+
+// image from pixabay
+const pixabay = async cityName => {
+  const pixabayUrl = pixaUrl + cityName;
+  const res = fetch(pixabayUrl);
+  let image = {};
+  try {
+    image = await res.json();
+    return image;
+  } catch (error) {
+    console.log('error', error);
+  }
+  res.send(image);
+};
