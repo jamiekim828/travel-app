@@ -9,9 +9,11 @@ function performAction(e) {
 
       const cityName = data.city_name;
       const countryName = data.countryName;
-      postData('http://localhost:8081/add/location', {
+      const located = data.adminName1;
+      postData('http://localhost:8080/add', {
         cityName,
-        countryName
+        countryName,
+        located
       });
     });
   }
@@ -35,7 +37,9 @@ const getLocation = async () => {
   }
 };
 
-const postData = async (url = '/', data = {}) => {
+const postData = async (url = '', data = {}) => {
+  let input = document.getElementById('destination').value;
+  console.log('what is input?', input);
   const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
@@ -46,7 +50,7 @@ const postData = async (url = '/', data = {}) => {
   });
   try {
     const result = await res.json();
-    console.log(result);
+
     return result;
   } catch (error) {
     console.log('error', error);
