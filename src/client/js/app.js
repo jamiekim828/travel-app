@@ -50,7 +50,7 @@ const postData = async (url = '', data = {}) => {
   });
   try {
     const result = await res.json();
-
+    console.log('post result', result);
     return result;
   } catch (error) {
     console.log('error', error);

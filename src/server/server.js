@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 // to use url encoded values
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: true
   })
 );
 
@@ -113,6 +113,8 @@ app.post('/add', async (req, res) => {
   const pixabayResult = await pixabay.json();
   const pixabayPhoto = pixabayResult.hits[1];
   console.log(pixabayPhoto);
+
+  res.send({ firstGeoname, weatherbitResult, pixabayPhoto });
 });
 
 // city data from geonames
