@@ -75,9 +75,10 @@ function addData(req, res) {
 // POST route
 app.post('/add', async (req, res) => {
   console.log('/add req.body', req.body);
+  const location = req.body.city_location;
 
   // geonames
-  const geonamesUrl = geoUrl + 'london' + geoID;
+  const geonamesUrl = geoUrl + location + geoID;
   const getGeonames = await fetch(geonamesUrl, {
     method: 'GET',
     headers: {
@@ -114,7 +115,15 @@ app.post('/add', async (req, res) => {
   const pixabayPhoto = pixabayResult.hits[1];
   console.log(pixabayPhoto);
 
-  res.send({ firstGeoname, weatherbitResult, pixabayPhoto });
+  let newTravelData = {
+    destination: firstGeoname.name,
+    country: firstGeoname.countryName,
+    temperature: weatherbitResult.data[0].temp,
+    weatherinfo: weatherbitResult.data[0].weather.description,
+    photoUrl: pixabayPhoto.pageURL
+  };
+
+  res.send(newTravelData);
 });
 
 // city data from geonames

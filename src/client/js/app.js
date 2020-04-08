@@ -7,14 +7,10 @@ function performAction(e) {
     getLocation().then(data => {
       console.log('data', data);
 
-      const cityName = data.city_name;
-      const countryName = data.countryName;
-      const located = data.adminName1;
-      postData('http://localhost:8080/add', {
-        cityName,
-        countryName,
-        located
-      });
+      const city_location = data[0].name;
+      console.log(city_location);
+
+      postData('http://localhost:8080/add', { city_location: cityname });
     });
   }
 }
@@ -55,6 +51,11 @@ const postData = async (url = '', data = {}) => {
   } catch (error) {
     console.log('error', error);
   }
+};
+
+// update UI
+const updateUI = async () => {
+  let origin_city = document.getElementById('origin').value;
 };
 
 export { performAction };
