@@ -90,6 +90,7 @@ const updateUI = async () => {
     const trip = await req.json();
     console.log('trip', trip);
     let photoUrl = trip[0].photoUrl;
+    let country = trip[0].country;
     let temperature = trip[0].temperature;
     let description = trip[0].weatherinfo;
     let daparture = document.getElementById('departure-date').value;
@@ -98,22 +99,31 @@ const updateUI = async () => {
     let duration = date_diff(daparture, returning);
     console.log('duration', duration);
     let exact_days = Number(`${duration}`) + Number(1);
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      '-' +
+      (today.getMonth() + 1) +
+      '-' +
+      today.getDate();
+    let dDay = date_diff(date, daparture);
 
     document.getElementById(
       'cityphoto'
     ).innerHTML = `<img src="${photoUrl}" alt="${destination}">`;
     document.getElementById(
       'where'
-    ).innerHTML = `Your journey to <span class='desti'>${destination}</span>`;
+    ).innerHTML = `Your itinerary to <span class='desti'>${destination}</span>`;
     document.getElementById(
       'wheretowhere'
-    ).innerHTML = `from <span class='ori'>${origin_city}</span> to <span class='des'>${destination}</span>`;
+    ).innerHTML = `[from <span class='ori'>${origin_city}</span> to <span class='des'>${destination}</span>, <span class='des'>${country}</span>]`;
     document.getElementById(
       'dateinfo'
-    ).innerHTML = `${daparture} ~ ${returning}`;
+    ).innerHTML = `Travel Dates : ${daparture} ~ ${returning}`;
     document.getElementById(
       'duration'
-    ).innerHTML = `${duration} nights & ${exact_days} days`;
+    ).innerHTML = `Duration : ${duration} nights & ${exact_days} days`;
+    document.getElementById('daystogo').innerHTML = `D-day : ${dDay} days left`;
     document.getElementById(
       'weatherresult'
     ).innerHTML = `Weather : Current weather of <span class='des'>${destination}</span> is ${description} and temperature is ${temperature}°C`;
