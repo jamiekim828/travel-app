@@ -18,7 +18,7 @@ function performAction(e) {
       .then(
         setTimeout(function() {
           updateUI();
-        }, 1000)
+        }, 3000)
       );
   }
 }
@@ -64,6 +64,7 @@ const postData = async (url = '', data = {}) => {
 // update UI
 const updateUI = async () => {
   let origin_city = document.getElementById('origin').value;
+  let destination = document.getElementById('destination').value;
 
   const req = await fetch('http://localhost:8080/all', {
     headers: { 'Content-type': 'application/json' },
@@ -72,6 +73,22 @@ const updateUI = async () => {
   try {
     const trip = await req.json();
     console.log('trip', trip);
+    let photoUrl = trip[0].photoUrl;
+    let temperature = trip[0].temperature;
+    let description = trip[0].weatherinfo;
+
+    document.getElementById(
+      'cityphoto'
+    ).innerHTML = `<img src="${photoUrl}" alt="${destination}">`;
+    document.getElementById(
+      'where'
+    ).innerHTML = `Your journey to <span class='desti'>${destination}</span>`;
+    document.getElementById(
+      'wheretowhere'
+    ).innerHTML = `from <span class='ori'>${origin_city}</span> to <span class='des'>${destination}</span>`;
+    document.getElementById(
+      'weatherresult'
+    ).innerHTML = `Weather : Current weather of <span class='des'>${destination}</span> is ${description} and temperature is ${temperature}°C`;
   } catch (error) {
     console.log('error', error);
   }

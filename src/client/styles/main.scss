@@ -126,6 +126,16 @@ footer {
   padding: 10px 20px;
   background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid rgba(51, 161, 222, 1);
+
+  .desti {
+    text-transform: uppercase;
+  }
+  .des {
+    text-transform: capitalize;
+  }
+  .ori {
+    text-transform: capitalize;
+  }
 }
 
 .trip_plans {

@@ -112,7 +112,7 @@ app.post('/add', async (req, res) => {
     }
   });
   const pixabayResult = await pixabay.json();
-  const pixabayPhoto = pixabayResult.hits[1];
+  const pixabayPhoto = pixabayResult.hits[0];
   console.log(pixabayPhoto);
 
   let newTravelData = {
@@ -120,11 +120,11 @@ app.post('/add', async (req, res) => {
     country: firstGeoname.countryName,
     temperature: weatherbitResult.data[0].temp,
     weatherinfo: weatherbitResult.data[0].weather.description,
-    photoUrl: pixabayPhoto.pageURL
+    photoUrl: pixabayPhoto.webformatURL
   };
 
+  travelData.unshift(newTravelData);
   res.send(newTravelData);
-  travelData.push(newTravelData);
 });
 
 // city data from geonames
