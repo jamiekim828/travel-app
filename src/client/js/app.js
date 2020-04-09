@@ -1,17 +1,25 @@
+import fetch from 'node-fetch';
+
 document.getElementById('planbutton').addEventListener('click', performAction);
 
 function performAction(e) {
   let cityname = document.getElementById('destination').value;
 
   if (cityname) {
-    getLocation().then(data => {
-      console.log('data', data);
+    getLocation()
+      .then(data => {
+        console.log('data', data);
 
-      const city_location = data[0].name;
-      console.log(city_location);
+        const city_location = data[0].name;
+        console.log(city_location);
 
-      postData('http://localhost:8080/add', { city_location: cityname });
-    });
+        postData('http://localhost:8080/add', { city_location: cityname });
+      })
+      .then(
+        setTimeout(function() {
+          updateUI();
+        }, 1000)
+      );
   }
 }
 
@@ -56,6 +64,17 @@ const postData = async (url = '', data = {}) => {
 // update UI
 const updateUI = async () => {
   let origin_city = document.getElementById('origin').value;
+
+  const req = await fetch('http://localhost:8080/all', {
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify()
+  });
+  try {
+    const trip = await req.json();
+    console.log('trip', trip);
+  } catch (error) {
+    console.log('error', error);
+  }
 };
 
 export { performAction };

@@ -124,6 +124,7 @@ app.post('/add', async (req, res) => {
   };
 
   res.send(newTravelData);
+  travelData.push(newTravelData);
 });
 
 // city data from geonames
