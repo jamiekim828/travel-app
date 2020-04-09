@@ -9,11 +9,12 @@ function performAction(e) {
     getLocation()
       .then(data => {
         console.log('data', data);
-
         const city_location = data[0].name;
         console.log(city_location);
 
-        postData('http://localhost:8080/add', { city_location: cityname });
+        postData('http://localhost:8080/add', {
+          city_location: cityname
+        });
       })
       .then(
         setTimeout(function() {
@@ -41,6 +42,7 @@ const getLocation = async () => {
   }
 };
 
+// POST
 const postData = async (url = '', data = {}) => {
   let input = document.getElementById('destination').value;
   console.log('what is input?', input);
@@ -61,6 +63,20 @@ const postData = async (url = '', data = {}) => {
   }
 };
 
+// calculate duration
+
+const date_diff = (dt1, dt2) => {
+  let date1 = document.getElementById('departure-date').value;
+  let date2 = document.getElementById('return-date').value;
+  dt1 = new Date(date1);
+  dt2 = new Date(date2);
+  return Math.floor(
+    (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
+      Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
+      (1000 * 60 * 60 * 24)
+  );
+};
+
 // update UI
 const updateUI = async () => {
   let origin_city = document.getElementById('origin').value;
@@ -76,6 +92,12 @@ const updateUI = async () => {
     let photoUrl = trip[0].photoUrl;
     let temperature = trip[0].temperature;
     let description = trip[0].weatherinfo;
+    let daparture = document.getElementById('departure-date').value;
+    let returning = document.getElementById('return-date').value;
+
+    let duration = date_diff(daparture, returning);
+    console.log('duration', duration);
+    let exact_days = Number(`${duration}`) + Number(1);
 
     document.getElementById(
       'cityphoto'
@@ -86,6 +108,12 @@ const updateUI = async () => {
     document.getElementById(
       'wheretowhere'
     ).innerHTML = `from <span class='ori'>${origin_city}</span> to <span class='des'>${destination}</span>`;
+    document.getElementById(
+      'dateinfo'
+    ).innerHTML = `${daparture} ~ ${returning}`;
+    document.getElementById(
+      'duration'
+    ).innerHTML = `${duration} nights & ${exact_days} days`;
     document.getElementById(
       'weatherresult'
     ).innerHTML = `Weather : Current weather of <span class='des'>${destination}</span> is ${description} and temperature is ${temperature}°C`;
