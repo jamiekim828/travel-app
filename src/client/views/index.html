@@ -95,61 +95,20 @@
                 <div class="activities">
                   <h4>
                     <span class="act"></span>
-                    "Flight Info"
+                    "Addtional Information"
                   </h4>
                   <ul>
                     <li class="add_item" id="add_item">
                       <div class="add_header">
-                        <p class="drop">Add flight info</p>
+                        <p class="drop">Add more details about this trip</p>
                         <span class="fa_plus drop"></span>
                       </div>
                       <div class="todo">
                         <form class="todo_custom">
-                          <label for="cars">Outbound : </label>
-                          <select id="cars">
-                            <option value="none">-</option>
-                            <option value="AA">AA</option>
-                            <option value="AC">AC</option>
-                            <option value="AF">AF</option>
-                            <option value="NZ">NZ</option>
-                            <option value="AM">AM</option>
-                            <option value="SU">SU</option>
-                            <option value="OZ">OZ</option>
-                            <option value="BA">BA</option>
-                            <option value="CX">CX</option>
-                            <option value="DL">DL</option>
-                            <option value="KA">KA</option>
-                            <option value="KE">KE</option>
-                            <option value="KL">KL</option>
-                            <option value="LH">LH</option>
-                            <option value="SQ">SQ</option>
-                            <option value="UA">UA</option>
-                            <option value="etc">etc.</option>
-                          </select>
-                          <input type="time" id="appt" name="appt" />
-                          <label for="cars">Inbound : </label>
-                          <select id="cars">
-                            <option value="none">-</option>
-                            <option value="AA">AA</option>
-                            <option value="AC">AC</option>
-                            <option value="AF">AF</option>
-                            <option value="NZ">NZ</option>
-                            <option value="AM">AM</option>
-                            <option value="SU">SU</option>
-                            <option value="OZ">OZ</option>
-                            <option value="BA">BA</option>
-                            <option value="CX">CX</option>
-                            <option value="DL">DL</option>
-                            <option value="KA">KA</option>
-                            <option value="KE">KE</option>
-                            <option value="KL">KL</option>
-                            <option value="LH">LH</option>
-                            <option value="SQ">SQ</option>
-                            <option value="UA">UA</option>
-                            <option value="etc">etc.</option>
-                          </select>
-                          <input type="time" id="appt" name="appt" />
-                          <button type="submit" class="fa-right"></button>
+                          <input type="text" name="name" placeholder="" />
+                          <button type="submit" class="fa-right" id="addbutton">
+                            Add
+                          </button>
                         </form>
                       </div>
                     </li>
@@ -175,7 +134,9 @@
                             name="name"
                             placeholder="Add what do do"
                           />
-                          <button type="submit" class="fa-right"></button>
+                          <button type="submit" class="fa-right" id="addbutton">
+                            Add
+                          </button>
                         </form>
                       </div>
                     </li>
@@ -201,7 +162,9 @@
                             name="name"
                             placeholder="Packing items"
                           />
-                          <button type="submit" class="fa-right"></button>
+                          <button type="submit" class="fa-right" id="addbutton">
+                            Add
+                          </button>
                         </form>
                       </div>
                     </li>

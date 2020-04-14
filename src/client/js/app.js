@@ -132,4 +132,10 @@ const updateUI = async () => {
   }
 };
 
+document.getElementById('addbutton').addEventListener('click', addList);
+
+function addList(e) {
+  console.log('e', e);
+}
+
 export { performAction };
