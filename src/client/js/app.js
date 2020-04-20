@@ -138,4 +138,8 @@ function addList(e) {
   console.log('e', e);
 }
 
+function generateNewTrip() {}
+
+function removeTrip() {}
+
 export { performAction };

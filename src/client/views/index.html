@@ -95,30 +95,6 @@
                 <div class="activities">
                   <h4>
                     <span class="act"></span>
-                    "Addtional Information"
-                  </h4>
-                  <ul>
-                    <li class="add_item" id="add_item">
-                      <div class="add_header">
-                        <p class="drop">Add more details about this trip</p>
-                        <span class="fa_plus drop"></span>
-                      </div>
-                      <div class="todo">
-                        <form class="todo_custom">
-                          <input type="text" name="name" placeholder="" />
-                          <button type="submit" class="fa-right" id="addbutton">
-                            Add
-                          </button>
-                        </form>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="plans-c">
-                <div class="activities">
-                  <h4>
-                    <span class="act"></span>
                     "Do & See"
                   </h4>
                   <ul>
@@ -132,16 +108,28 @@
                           <input
                             type="text"
                             name="name"
+                            id="myInput"
                             placeholder="Add what do do"
                           />
-                          <button type="submit" class="fa-right" id="addbutton">
+                          <span
+                            onclick="newElement()"
+                            class="fa-right"
+                            id="addbutton"
+                            >Add</span
+                          >
+                          <!-- <button type="submit" class="fa-right" id="addbutton">
                             Add
-                          </button>
+                          </button> -->
                         </form>
                       </div>
                     </li>
                   </ul>
                 </div>
+                <ul id="myUL">
+                  <li class="checked">Go to Amsterdam central station</li>
+                  <li>Meet Serene</li>
+                  <li>Visit the museum plein</li>
+                </ul>
               </div>
               <div class="plans-c">
                 <div class="activities">
@@ -160,11 +148,18 @@
                           <input
                             type="text"
                             name="name"
+                            id="myInput"
                             placeholder="Packing items"
                           />
-                          <button type="submit" class="fa-right" id="addbutton">
+                          <span
+                            onclick="newElement()"
+                            class="fa-right"
+                            id="addbutton"
+                            >Add</span
+                          >
+                          <!-- <button type="submit" class="fa-right" id="addbutton">
                             Add
-                          </button>
+                          </button> -->
                         </form>
                       </div>
                     </li>
