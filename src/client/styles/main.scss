@@ -264,3 +264,21 @@ footer {
     background-color: #bbb;
   }
 }
+
+#list_title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 33px;
+}
+
+.list_main {
+  width: 95vw !important;
+  display: block;
+  overflow: visible;
+  width: 60vw;
+  margin: 20px auto 0 auto;
+  border: 1px solid;
+  border-color: rgba(51, 161, 222, 1);
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 3px;
+}

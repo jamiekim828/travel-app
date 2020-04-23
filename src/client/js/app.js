@@ -127,6 +127,17 @@ const updateUI = async () => {
     document.getElementById(
       'weatherresult'
     ).innerHTML = `Weather : Current weather of <span class='des'>${destination}</span> is ${description} and temperature is ${temperature}°C`;
+
+    for (let i = 1; i < trip.length; i++) {
+      const nextDestination = document.createElement('div');
+      nextDestination.id = 'next_destination';
+
+      document.getElementById('next_destination').innerHTML =
+        trip[i].destination;
+      document.getElementById('next_country').innerHTML = trip[i].country;
+      document.getElementById('next_departure').innerHTML = trip[i].weatherinfo;
+      document.getElementById('next_weather').innerHTML = trip[i].temperature;
+    }
   } catch (error) {
     console.log('error', error);
   }
@@ -197,8 +208,7 @@ function newElement() {
 
 document.getElementById('todoadd').addEventListener('click', newElement);
 
-function generateNewTrip() {}
-
+function tripList() {}
 function removeTrip() {}
 
 export { performAction };

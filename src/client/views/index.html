@@ -70,7 +70,7 @@
         </section>
         <section class="results">
           <div class="results_title">
-            <h3 id="results_title">My Trip List</h3>
+            <h3 id="results_title">My Trip Information</h3>
           </div>
           <div class="results_main">
             <div class="trip_head">
@@ -91,7 +91,7 @@
               </div>
             </div>
 
-            <div class="trip_plans">
+            <div class="trip_plans" id="plancontainer1">
               <div id="myDIV" class="header">
                 <h2>To Do List</h2>
                 <input type="text" id="myInput" placeholder="Add things to do during your trip">
@@ -99,15 +99,40 @@
               </div>
               
               <ul id="myUL">
-                <li>Hit the gym</li>
-                <li class="checked">Pay bills</li>
-                
+                <li class="checked">Go to the central station</li>
+                <li>Meet Julia</li>
+              </ul>
+            </div>
+            <div class="trip_plans" id="plancontainer2">
+              <div id="myDIV" class="header">
+                <h2>Packing List</h2>
+                <input type="text" id="myInput" placeholder="Add things to pack for your trip">
+                <span onclick="newElement()" id="todoadd" class="addBtn">Add</span>
+              </div>
+              
+              <ul id="myUL">
+                <li class="checked">Passport</li>
+                <li>Charger</li>
               </ul>
             </div>
              
               </div>
             </div>
           </div>
+          
+        </section>
+        <section class="trip_list_section">
+          <div class="list_title">
+            <h3 id="list_title">My Trip List</h3>
+          </div>
+          <div class="list_main">
+            <div id="next_destination"></div>
+            <div id="next_country"></div>
+            <div id="next_departure"></div>
+            <div id="next_weather"></div>
+            <div id="next_trip_togo"></div>
+          </div>
+
         </section>
       </div>
     </main>
