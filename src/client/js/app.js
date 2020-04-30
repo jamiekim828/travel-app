@@ -128,7 +128,7 @@ const updateUI = async () => {
       'weatherresult'
     ).innerHTML = `Weather : Current weather of <span class='des'>${destination}</span> is ${description} and temperature is ${temperature}°C`;
 
-    for (let i = 1; i < trip.length; i++) {
+    for (let i = 0; i < trip.length; i++) {
       const nextDestination = document.createElement('div');
       nextDestination.id = 'next_destination';
 
@@ -137,6 +137,8 @@ const updateUI = async () => {
       document.getElementById('next_country').innerHTML = trip[i].country;
       document.getElementById('next_departure').innerHTML = trip[i].weatherinfo;
       document.getElementById('next_weather').innerHTML = trip[i].temperature;
+      trip[i].duration = document.getElementById('duration').innerHTML;
+      trip[i].daystogo = document.getElementById('daystogo').innerHTML;
     }
   } catch (error) {
     console.log('error', error);
@@ -208,8 +210,51 @@ function newElement() {
 
 document.getElementById('todoadd').addEventListener('click', newElement);
 
-function tripList() {}
-function removeTrip() {}
+// Create New Trip Card
+
+function createTripCard() {
+  createTripList('http://localhost:8080/all', {}).then();
+}
+
+const createTripList = async (url = '', data = {}) => {
+  const res = await fetch(url, {
+    method: 'GET',
+    credentials: 'same-origin',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  try {
+    const latest = await res.json();
+    console.log('latest', latest);
+    return latest;
+  } catch (error) {
+    console.log('error', error);
+  }
+};
+
+const addToList = async () => {
+  const req = await fetch('http://localhost:8080/all', {
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify()
+  });
+  try {
+    const alltrip = await req.json();
+    console.log('alltrip', alltrip);
+  } catch (error) {
+    console.log('error', error);
+  }
+};
+
+function addToListButton(e) {
+  e.preventDefault();
+  document.getElementById('addtolist').disabled = false;
+  document.getElementById('addtolist').addEventListener('click', addToList);
+}
+
+// document.getElementById('addtolist').addEventListener('click', addToList);
 
 export { performAction };
 export { newElement };
+export { createTripCard };

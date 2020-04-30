@@ -49,7 +49,7 @@ app.get('/all', getData);
 
 function getData(req, res) {
   res.send(travelData);
-  console.log('travelData', travelData);
+  console.log('get travelData', travelData);
 }
 
 // geonames API
@@ -126,46 +126,3 @@ app.post('/add', async (req, res) => {
   travelData.unshift(newTravelData);
   res.send(newTravelData);
 });
-
-// city data from geonames
-// const geonames = async cityName => {
-//   const geonamesUrl = geoUrl + cityName + geoID;
-//   const res = fetch(geonamesUrl);
-//   let city = {};
-//   try {
-//     console.log('geonames res', res);
-//     city = res.json();
-//     return city;
-//   } catch (error) {
-//     console.log('error', error);
-//   }
-//   res.send(city);
-// };
-
-// weather data from weatherbit
-// const weatherbit = async cityName => {
-//   const weatherbitUrl = weatherUrl + cityName + weatherKey;
-//   const res = fetch(weatherbitUrl);
-//   let weather = {};
-//   try {
-//     weather = await res.json();
-//     return weather;
-//   } catch (error) {
-//     console.log('error', error);
-//   }
-//   res.send(weather);
-// };
-
-// image from pixabay
-// const pixabay = async cityName => {
-//   const pixabayUrl = pixaUrl + cityName;
-//   const res = fetch(pixabayUrl);
-//   let image = {};
-//   try {
-//     image = await res.json();
-//     return image;
-//   } catch (error) {
-//     console.log('error', error);
-//   }
-//   res.send(image);
-// };

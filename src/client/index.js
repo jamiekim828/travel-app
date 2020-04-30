@@ -1,4 +1,4 @@
-import { performAction, newElement } from './js/app';
+import { performAction, newElement, createTripCard } from './js/app';
 
 import './styles/base.scss';
 import './styles/main.scss';
@@ -7,3 +7,4 @@ import './styles/main.scss';
 
 export { performAction };
 export { newElement };
+export { createTripCard };
