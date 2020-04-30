@@ -211,7 +211,7 @@ const addToList = async () => {
 
     console.log('is this right?', alltrip);
 
-    for (i = 0; i < alltrip.length; i++) {
+    for (i = 0; i <= alltrip.length - 1; i++) {
       var card = document.createElement('div');
 
       var desti_link = document.createElement('a');
@@ -225,6 +225,7 @@ const addToList = async () => {
       tripWeather.innerHTML = `The weather is ${alltrip[i].weatherinfo} and the temperature is ${alltrip[i].temperature}`;
 
       var link = document.createElement('a');
+      link.href = '#';
       var img = document.createElement('img');
       link.appendChild(img);
       img.id = 'location_img';
