@@ -231,9 +231,14 @@ const addToList = async () => {
       img.id = 'location_img';
       img.src = `${alltrip[i].photoUrl}`;
 
+      var del = document.createElement('button');
+      del.id = 'delete_list';
+      del.innerHTML = 'delete';
+
       card.appendChild(desti_link);
       card.appendChild(tripWeather);
       card.appendChild(link);
+      card.appendChild(del);
 
       document.getElementById('list_main').appendChild(card);
     }
@@ -253,23 +258,3 @@ document.getElementById('addtolist').addEventListener('click', addToList);
 export { performAction };
 export { newElement };
 export { createTripCard };
-
-// for (let i = 0; i < trip.length; i++) {
-//     const nextDestination = document.createElement('div');
-//     nextDestination.id = 'next_destination';
-
-//     document.getElementById('next_destination').innerHTML =
-//       trip[i].destination;
-//     document.getElementById('next_country').innerHTML = trip[i].country;
-//     document.getElementById('next_departure').innerHTML = trip[i].weatherinfo;
-//     document.getElementById('next_weather').innerHTML = trip[i].temperature;
-//     trip[i].duration = document.getElementById('duration').innerHTML;
-//     trip[i].daystogo = document.getElementById('daystogo').innerHTML;
-//   }
-
-//var add = document.getElementById('addtolist');
-
-// if (add.clicked == true) {
-//     console.log('is this right?', trip);
-//   } else {
-//   }
