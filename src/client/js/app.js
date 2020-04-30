@@ -127,19 +127,6 @@ const updateUI = async () => {
     document.getElementById(
       'weatherresult'
     ).innerHTML = `Weather : Current weather of <span class='des'>${destination}</span> is ${description} and temperature is ${temperature}°C`;
-
-    for (let i = 0; i < trip.length; i++) {
-      const nextDestination = document.createElement('div');
-      nextDestination.id = 'next_destination';
-
-      document.getElementById('next_destination').innerHTML =
-        trip[i].destination;
-      document.getElementById('next_country').innerHTML = trip[i].country;
-      document.getElementById('next_departure').innerHTML = trip[i].weatherinfo;
-      document.getElementById('next_weather').innerHTML = trip[i].temperature;
-      trip[i].duration = document.getElementById('duration').innerHTML;
-      trip[i].daystogo = document.getElementById('daystogo').innerHTML;
-    }
   } catch (error) {
     console.log('error', error);
   }
@@ -212,27 +199,7 @@ document.getElementById('todoadd').addEventListener('click', newElement);
 
 // Create New Trip Card
 
-function createTripCard() {
-  createTripList('http://localhost:8080/all', {}).then();
-}
-
-const createTripList = async (url = '', data = {}) => {
-  const res = await fetch(url, {
-    method: 'GET',
-    credentials: 'same-origin',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
-  try {
-    const latest = await res.json();
-    console.log('latest', latest);
-    return latest;
-  } catch (error) {
-    console.log('error', error);
-  }
-};
+function createTripCard() {}
 
 const addToList = async () => {
   const req = await fetch('http://localhost:8080/all', {
@@ -241,20 +208,67 @@ const addToList = async () => {
   });
   try {
     const alltrip = await req.json();
-    console.log('alltrip', alltrip);
+
+    console.log('is this right?', alltrip);
+
+    for (i = 0; i < alltrip.length; i++) {
+      var card = document.createElement('div');
+
+      var desti_link = document.createElement('a');
+      var tripDesti = document.createElement('h2');
+      desti_link.appendChild(tripDesti);
+      tripDesti.id = 'next_destination';
+      tripDesti.innerHTML = `${alltrip[i].destination}/${alltrip[i].country}`;
+
+      var tripWeather = document.createElement('h3');
+      tripWeather.id = 'next_weather';
+      tripWeather.innerHTML = `The weather is ${alltrip[i].weatherinfo} and the temperature is ${alltrip[i].temperature}`;
+
+      var link = document.createElement('a');
+      var img = document.createElement('img');
+      link.appendChild(img);
+      img.id = 'location_img';
+      img.src = `${alltrip[i].photoUrl}`;
+
+      card.appendChild(desti_link);
+      card.appendChild(tripWeather);
+      card.appendChild(link);
+
+      document.getElementById('list_main').appendChild(card);
+    }
   } catch (error) {
     console.log('error', error);
   }
 };
 
-function addToListButton(e) {
-  e.preventDefault();
-  document.getElementById('addtolist').disabled = false;
-  document.getElementById('addtolist').addEventListener('click', addToList);
-}
+document.getElementById('addtolist').addEventListener('click', addToList);
 
-// document.getElementById('addtolist').addEventListener('click', addToList);
+// function addToListButton(e) {
+//   e.preventDefault();
+//   document.getElementById('addtolist').disabled = false;
+//   document.getElementById('addtolist').addEventListener('click', addToList);
+// }
 
 export { performAction };
 export { newElement };
 export { createTripCard };
+
+// for (let i = 0; i < trip.length; i++) {
+//     const nextDestination = document.createElement('div');
+//     nextDestination.id = 'next_destination';
+
+//     document.getElementById('next_destination').innerHTML =
+//       trip[i].destination;
+//     document.getElementById('next_country').innerHTML = trip[i].country;
+//     document.getElementById('next_departure').innerHTML = trip[i].weatherinfo;
+//     document.getElementById('next_weather').innerHTML = trip[i].temperature;
+//     trip[i].duration = document.getElementById('duration').innerHTML;
+//     trip[i].daystogo = document.getElementById('daystogo').innerHTML;
+//   }
+
+//var add = document.getElementById('addtolist');
+
+// if (add.clicked == true) {
+//     console.log('is this right?', trip);
+//   } else {
+//   }
