@@ -1,4 +1,5 @@
-import { performAction, newElement, createTripCard } from './js/app';
+import { performAction, newElement } from './js/app';
+import { deleteHandle } from './js/deleteList';
 
 import './styles/base.scss';
 import './styles/main.scss';
@@ -7,4 +8,4 @@ import './styles/main.scss';
 
 export { performAction };
 export { newElement };
-export { createTripCard };
+export { deleteHandle };

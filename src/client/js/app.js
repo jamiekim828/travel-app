@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
+import { deleteHandle } from './deleteList';
 
+// input destination, date then duration, d-day, weather will show
 document.getElementById('planbutton').addEventListener('click', performAction);
 
 function performAction(e) {
@@ -64,7 +66,6 @@ const postData = async (url = '', data = {}) => {
 };
 
 // calculate duration
-
 const date_diff = (dt1, dt2) => {
   let date1 = document.getElementById('departure-date').value;
   let date2 = document.getElementById('return-date').value;
@@ -77,7 +78,7 @@ const date_diff = (dt1, dt2) => {
   );
 };
 
-// update UI
+// update UI (planning)
 const updateUI = async () => {
   let origin_city = document.getElementById('origin').value;
   let destination = document.getElementById('destination').value;
@@ -89,6 +90,7 @@ const updateUI = async () => {
   try {
     const trip = await req.json();
     console.log('trip', trip);
+
     let photoUrl = trip[0].photoUrl;
     let country = trip[0].country;
     let temperature = trip[0].temperature;
@@ -98,6 +100,7 @@ const updateUI = async () => {
 
     let duration = date_diff(daparture, returning);
     console.log('duration', duration);
+
     let exact_days = Number(`${duration}`) + Number(1);
     var today = new Date();
     var date =
@@ -132,8 +135,7 @@ const updateUI = async () => {
   }
 };
 
-// -----------------------------------------
-
+// To do list
 // Create a "close" button and append it to each list item
 var thisUL = document.getElementById('myUL');
 var myNodelist = thisUL.getElementsByTagName('LI');
@@ -160,15 +162,15 @@ for (i = 0; i < close.length; i++) {
 var list = document.getElementById('myUL');
 list.addEventListener(
   'click',
-  function(ev) {
-    if (ev.target.tagName === 'LI') {
-      ev.target.classList.toggle('checked');
+  function(e) {
+    if (e.target.tagName === 'LI') {
+      e.target.classList.toggle('checked');
     }
   },
   false
 );
 
-// Create a new list item when clicking on the "Add" button
+// Create a new to do list when clicking on the "Add" button
 function newElement() {
   var li = document.createElement('li');
   var inputValue = document.getElementById('myInput').value;
@@ -197,10 +199,7 @@ function newElement() {
 
 document.getElementById('todoadd').addEventListener('click', newElement);
 
-// Create New Trip Card
-
-function createTripCard() {}
-
+// Create Travel List - you can see all travel list
 const addToList = async () => {
   const req = await fetch('http://localhost:8080/all', {
     headers: { 'Content-type': 'application/json' },
@@ -232,7 +231,7 @@ const addToList = async () => {
       img.src = `${alltrip[i].photoUrl}`;
 
       var del = document.createElement('button');
-      del.id = 'delete_list';
+      del.id = `delete_list${i}`;
       del.innerHTML = 'delete';
 
       card.appendChild(desti_link);
@@ -241,6 +240,9 @@ const addToList = async () => {
       card.appendChild(del);
 
       document.getElementById('list_main').appendChild(card);
+      document
+        .getElementById(`delete_list${i}`)
+        .addEventListener('click', deleteHandle);
     }
   } catch (error) {
     console.log('error', error);
@@ -249,12 +251,5 @@ const addToList = async () => {
 
 document.getElementById('addtolist').addEventListener('click', addToList);
 
-// function addToListButton(e) {
-//   e.preventDefault();
-//   document.getElementById('addtolist').disabled = false;
-//   document.getElementById('addtolist').addEventListener('click', addToList);
-// }
-
 export { performAction };
 export { newElement };
-export { createTripCard };

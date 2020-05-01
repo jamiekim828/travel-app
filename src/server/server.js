@@ -72,7 +72,7 @@ function addData(req, res) {
   res.send(travelData);
 }
 
-// POST route
+// POST route (new travel data)
 app.post('/add', async (req, res) => {
   console.log('/add req.body', req.body);
   const location = req.body.city_location;
@@ -125,4 +125,9 @@ app.post('/add', async (req, res) => {
 
   travelData.unshift(newTravelData);
   res.send(newTravelData);
+});
+
+// POST route (delete travel list)
+app.post('/delete', async (req, res) => {
+  console.log('delete', req.body);
 });
