@@ -1,5 +1,6 @@
-let testServer = {
-  test: 'Server Running'
-};
+function testServer() {
+  let message = 'Server Running';
+  return message;
+}
 
-module.exports = testServer;
+export { testServer };
