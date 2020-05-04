@@ -2,7 +2,11 @@ import fetch from 'node-fetch';
 import { deleteHandle } from './deleteList';
 
 // input destination, date then duration, d-day, weather will show
-document.getElementById('planbutton').addEventListener('click', performAction);
+// document.getElementById('planbutton').addEventListener('click', performAction);
+document.addEventListener('DOMContentLoaded', function() {
+  var planbutton = document.getElementById('planbutton');
+  planbutton.addEventListener('click', performAction);
+});
 
 function performAction(e) {
   let cityname = document.getElementById('destination').value;
@@ -65,17 +69,21 @@ const postData = async (url = '', data = {}) => {
   }
 };
 
-// calculate duration
+// // calculate duration
 const date_diff = (dt1, dt2) => {
   let date1 = document.getElementById('departure-date').value;
   let date2 = document.getElementById('return-date').value;
-  dt1 = new Date(date1);
-  dt2 = new Date(date2);
-  return Math.floor(
-    (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
-      Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
-      (1000 * 60 * 60 * 24)
-  );
+  if (date1 && date2) {
+    dt1 = new Date(date1);
+    dt2 = new Date(date2);
+    return Math.floor(
+      (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
+        Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
+        (1000 * 60 * 60 * 24)
+    );
+  } else if (date1 == null || date2 == null) {
+    console.log('date informations needed');
+  }
 };
 
 // update UI (planning)
@@ -138,15 +146,26 @@ const updateUI = async () => {
 // To do list
 // Create a "close" button and append it to each list item
 var thisUL = document.getElementById('myUL');
-var myNodelist = thisUL.getElementsByTagName('LI');
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement('SPAN');
-  var txt = document.createTextNode('\u00D7');
-  span.className = 'close';
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
+if (thisUL) {
+  var myNodelist = thisUL.getElementsByTagName('LI');
+  var i;
+  for (i = 0; i < myNodelist.length; i++) {
+    var span = document.createElement('SPAN');
+    var txt = document.createTextNode('\u00D7');
+    span.className = 'close';
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+  }
 }
+// var myNodelist = thisUL.getElementsByTagName('LI');
+// var i;
+// for (i = 0; i < myNodelist.length; i++) {
+//   var span = document.createElement('SPAN');
+//   var txt = document.createTextNode('\u00D7');
+//   span.className = 'close';
+//   span.appendChild(txt);
+//   myNodelist[i].appendChild(span);
+// }
 
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName('close');
@@ -160,15 +179,26 @@ for (i = 0; i < close.length; i++) {
 
 // Add a "checked" symbol when clicking on a list item
 var list = document.getElementById('myUL');
-list.addEventListener(
-  'click',
-  function(e) {
-    if (e.target.tagName === 'LI') {
-      e.target.classList.toggle('checked');
-    }
-  },
-  false
-);
+if (list) {
+  list.addEventListener(
+    'click',
+    function(e) {
+      if (e.target.tagName === 'LI') {
+        e.target.classList.toggle('checked');
+      }
+    },
+    false
+  );
+}
+// list.addEventListener(
+//   'click',
+//   function(e) {
+//     if (e.target.tagName === 'LI') {
+//       e.target.classList.toggle('checked');
+//     }
+//   },
+//   false
+// );
 
 // Create a new to do list when clicking on the "Add" button
 function newElement() {
@@ -197,7 +227,11 @@ function newElement() {
   }
 }
 
-document.getElementById('todoadd').addEventListener('click', newElement);
+// document.getElementById('todoadd').addEventListener('click', newElement);
+document.addEventListener('DOMContentLoaded', function() {
+  var addaddbutton = document.getElementById('todoadd');
+  addaddbutton.addEventListener('click', newElement);
+});
 
 // Create Travel List - you can see all travel list
 const addToList = async () => {
@@ -249,7 +283,16 @@ const addToList = async () => {
   }
 };
 
-document.getElementById('addtolist').addEventListener('click', addToList);
+// document.getElementById('addtolist').addEventListener('click', addToList);
+document.addEventListener('DOMContentLoaded', function() {
+  var addlistaction = document.getElementById('addtolist');
+  addlistaction.addEventListener('click', addToList);
+});
+
+function sum(a, b) {
+  return a + b;
+}
 
 export { performAction };
 export { newElement };
+export { sum };

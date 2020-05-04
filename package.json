@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
+    "test:watch": "npm run test -- --watch",
     "start": "node src/server/server.js",
     "build": "webpack",
     "build-prod": "webpack --config webpack.prod.js",
