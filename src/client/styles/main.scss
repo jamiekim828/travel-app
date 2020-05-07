@@ -282,3 +282,16 @@ footer {
   border-radius: 2px;
   box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 3px;
 }
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .plantrip_button {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 900px) {
+  .search_form {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
