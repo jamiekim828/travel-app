@@ -42,14 +42,15 @@ app.get('/', function(req, res) {
 });
 
 // empty data
-const travelData = [];
+const travelData = {};
+let id = 0;
 
 // GET route: all data
 app.get('/all', getData);
 
 function getData(req, res) {
-  res.send(travelData);
-  console.log('get travelData', travelData);
+  res.send(Object.values(travelData));
+  console.log('get all travelData', travelData);
 }
 
 // geonames API
@@ -123,11 +124,16 @@ app.post('/add', async (req, res) => {
     photoUrl: pixabayPhoto.webformatURL
   };
 
-  travelData.unshift(newTravelData);
+  id++;
+  console.log(id);
+  travelData[id] = newTravelData;
   res.send(newTravelData);
 });
 
 // POST route (delete travel list)
 app.post('/delete', async (req, res) => {
-  console.log('delete', req.body);
+  console.log('delete', req.body.id);
+  const trip = travelData[req.body.id];
+  delete travelData[req.body.id];
+  res.send(trip);
 });

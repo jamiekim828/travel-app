@@ -157,15 +157,6 @@ if (thisUL) {
     myNodelist[i].appendChild(span);
   }
 }
-// var myNodelist = thisUL.getElementsByTagName('LI');
-// var i;
-// for (i = 0; i < myNodelist.length; i++) {
-//   var span = document.createElement('SPAN');
-//   var txt = document.createTextNode('\u00D7');
-//   span.className = 'close';
-//   span.appendChild(txt);
-//   myNodelist[i].appendChild(span);
-// }
 
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName('close');
@@ -190,15 +181,6 @@ if (list) {
     false
   );
 }
-// list.addEventListener(
-//   'click',
-//   function(e) {
-//     if (e.target.tagName === 'LI') {
-//       e.target.classList.toggle('checked');
-//     }
-//   },
-//   false
-// );
 
 // Create a new to do list when clicking on the "Add" button
 function newElement() {
@@ -244,7 +226,7 @@ const addToList = async () => {
 
     console.log('is this right?', alltrip);
 
-    for (i = 0; i <= alltrip.length - 1; i++) {
+    for (let i = 0; i <= alltrip.length - 1; i++) {
       var card = document.createElement('div');
 
       var desti_link = document.createElement('a');
@@ -276,14 +258,33 @@ const addToList = async () => {
       document.getElementById('list_main').appendChild(card);
       document
         .getElementById(`delete_list${i}`)
-        .addEventListener('click', deleteHandle);
+        .addEventListener('click', async () => {
+          console.log('here!!!!');
+          const delReq = await fetch('http://localhost:8080/delete', {
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ id: i + 1 }),
+            method: 'POST'
+          });
+          const delTrip = await delReq.json();
+
+          console.log('deleted', delTrip);
+
+          const getReq = await fetch('http://localhost:8080/all', {
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify()
+          });
+
+          const everyTrip = await req.json();
+
+          console.log('all', everyTrip);
+          return everyTrip;
+        });
     }
   } catch (error) {
     console.log('error', error);
   }
 };
 
-// document.getElementById('addtolist').addEventListener('click', addToList);
 document.addEventListener('DOMContentLoaded', function() {
   var addlistaction = document.getElementById('addtolist');
   addlistaction.addEventListener('click', addToList);
