@@ -54,6 +54,6 @@ Run npm script for start up the project:
 $ npm run start
 ```
 
-`$ npm run build-dev` to build development environment
-`$ npm run build-prod` to build production environment
-`$ npm run test` to test the app
+- `$ npm run build-dev` to build development environment
+- `$ npm run build-prod` to build production environment
+- `$ npm run test` to test the app
