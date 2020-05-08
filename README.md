@@ -48,7 +48,7 @@ PIXABAY_KEY=your_api_key
 
 **Project running on: http://localhost:8080**
 
-Run npm script for start up the project:
+- Run npm script for start up the project:
 
 ```
 $ npm run start
