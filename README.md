@@ -2,6 +2,7 @@
 
 - Nanodegree : Front End Developer
 - Module : Capstone
+- **_Extend Option: Added end date and displays length of trip_**
 
 ## Main technologies
 
