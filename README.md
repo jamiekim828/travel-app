@@ -45,16 +45,14 @@ WEATHERBIT_KEY=your_api_key
 PIXABAY_KEY=your_api_key
 ```
 
+**Project running on: http://localhost:8080**
+
 Run npm script for start up the project:
 
 ```
 $ npm run start
 ```
 
-Development mode
-
-```
-$ npm run build-dev
-```
-
-**Project running on: http://localhost:8080**
+`$ npm run build-dev` to build development environment
+`$ npm run build-prod` to build production environment
+`$ npm run test` to test the app
