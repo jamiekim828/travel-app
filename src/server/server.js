@@ -113,7 +113,8 @@ app.post('/add', async (req, res) => {
     }
   });
   const pixabayResult = await pixabay.json();
-  const pixabayPhoto = pixabayResult.hits[0];
+  console.log('here', pixabayResult);
+  const pixabayPhoto = pixabayResult.hits[1];
   console.log(pixabayPhoto);
 
   let newTravelData = {

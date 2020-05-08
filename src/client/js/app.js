@@ -168,7 +168,7 @@ for (i = 0; i < close.length; i++) {
   };
 }
 
-// Add a "checked" symbol when clicking on a list item
+// Add a "checked" symbol when clicking on a list itemw21
 var list = document.getElementById('myUL');
 if (list) {
   list.addEventListener(
@@ -271,12 +271,12 @@ const addToList = async () => {
 
           const getReq = await fetch('http://localhost:8080/all', {
             headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify()
+            body: JSON.stringify(),
+            method: 'GET'
           });
 
           const everyTrip = await req.json();
 
-          console.log('all', everyTrip);
           return everyTrip;
         });
     }
